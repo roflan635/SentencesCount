@@ -3,6 +3,19 @@
 
 #include "pch.h"
 #include "Task.h"
+#include <fstream>
+#include <string>
+int GetSentencesCount(std::string fileName)
+{
+	std::ifstream f(fileName);
+	if (f)
+	{
+		int count = 0;
+		std::string sentences;
+
+	}
+	else return -1;
+}
 
 /*
 	Разместите в данном файле функцию подсчета количества предложений, находящихся в текстовом файле.
