@@ -11,8 +11,12 @@ int GetSentencesCount(std::string fileName)
 	if (f)
 	{
 		int count = 0;
-		std::string sentences;
-
+		char ch;
+		while(ch = f.get())
+		{
+			if (ch == '.' || ch == '!' || ch == '?');
+		}
+		return count;
 	}
 	else return -1;
 }
