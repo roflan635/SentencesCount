@@ -8,13 +8,21 @@
 int GetSentencesCount(std::string fileName)
 {
 	std::ifstream f(fileName);
-	if (f)
+	if (f)		// проверка на открытие файла
 	{
 		int count = 0;
 		char ch;
-		while(ch = f.get())
+		bool sentence = false;
+		while(ch = f.get())		// считывание каждого символа
 		{
-			if (ch == '.' || ch == '!' || ch == '?');
+			if (ch != '.' && ch != '!' && ch != '?' && ch != ' ' && ch != '\t' && ch != '\n' && ch != (char)-1)		// проверка на то, являются ли несколько подряд идущих символов предложением
+				sentence = true;
+			if ((ch == '.' || ch == '!' || ch == '?' || ch == (char)-1) && sentence == true)		// проверка на признак конца предложения 
+			{
+				count++;
+				sentence = false;	// присваивание false, чтобы вернуться в начальные значения
+			}
+			if (f.eof()) break; // если файл окажется пустым, то выйти из цикла
 		}
 		return count;
 	}
